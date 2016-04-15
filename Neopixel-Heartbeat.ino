@@ -27,7 +27,7 @@ volatile boolean QS = false;        // becomes true when Arduoino finds a beat.
  
 // Set up use of NeoPixels
 const int NUMPIXELS = 9;           // Put the number of NeoPixels you are using here
-const int BRIGHTNESS = 100;          // Set brightness of NeoPixels here
+const int BRIGHTNESS = 10;          // Set brightness of NeoPixels here
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUMPIXELS, fadePin, NEO_GRB + NEO_KHZ800);
  
 void setup(){
@@ -46,7 +46,7 @@ void setup(){
 void loop(){
   sendDataSerial('S', Signal);      // send Processing the raw Pulse Sensor data
   if (QS == true){                    // Quantified Self flag is true when arduino finds a heartbeat
-     fadeRate = 255;                  // Set 'fadeRate' Variable to 255 to fade LED with pulse
+     fadeRate = 250;                  // Set 'fadeRate' Variable to 255 to fade LED with pulse
 //     sendDataSerial('B',BPM);       // send heart rate with a 'B' prefix
 //     sendDataSerial('Q',IBI);       // send time between beats with a 'Q' prefix
      QS = false;                      // reset the Quantified Self flag for next time    
