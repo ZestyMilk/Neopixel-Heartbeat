@@ -27,7 +27,7 @@ volatile boolean QS = false;        // becomes true when Arduoino finds a beat.
  
 // Set up use of NeoPixels
 const int NUMPIXELS = 9;           // Put the number of NeoPixels you are using here
-const int BRIGHTNESS = 10;          // Set brightness of NeoPixels here
+const int BRIGHTNESS = 250;          // Set brightness of NeoPixels here
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUMPIXELS, fadePin, NEO_GRB + NEO_KHZ800);
  
 void setup(){
@@ -68,10 +68,10 @@ void sendDataSerial(char symbol, int data ) {
 }
  
 void setStrip(int r) {     // Set the strip to one color intensity (red)
-   //int g;              // Green is set to zero (for non-red colors, change this)
-   int b;              // Blue is set to zero (for non-red colors, change this)
+   int g = 0;              // Green is set to zero (for non-red colors, change this)
+   int b = 20;              // Blue is set to zero (for non-red colors, change this)
    for (int x=0; x < NUMPIXELS; x++) {
-      strip.setPixelColor(x, strip.Color(r, (r/2.5), b));
+      strip.setPixelColor(x, strip.Color(b, (r/2.5), ((b*2)+r)));
    }
    strip.show();
 }
